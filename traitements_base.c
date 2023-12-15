@@ -66,6 +66,37 @@ PGMImage transfo_lineaire(PGMImage image){
 }
 
 
+// Transformation linéaire avec saturation. Retourne l'image transformée
+// Smin = saturation min, Smax = saturation max
+PGMImage transfo_lineaire_saturation(PGMImage image, int Smin, int Smax){
+    if(Smin < 0 || Smin > 255 || Smax < 0 || Smax > 255){
+        fprintf(stderr, "Transformation linéaire avec saturation: Smin et Smax doivent être comprises entre 0 et 255.\n");
+        exit(1);
+    }
+
+    if(Smin == Smax) return createImageWithColor(image.width, image.height, Smin);    
+
+    int minS = __min(Smin, Smax), maxS = __max(Smin, Smax), diff = maxS - minS;
+
+    int Lookup[256];
+    for (int i = 0; i < 256; ++i) {
+        if(i <= minS)  Lookup[i] = 0;
+        else if(i >= maxS)  Lookup[i] = 255;
+        else Lookup[i] = 255 * (i - minS) / diff;
+    }
+
+    PGMImage resultImage;
+    resultImage = copyImage(image, false);
+    for (int i = 0; i < image.height; ++i) {
+        for (int j = 0; j < image.width; ++j) {
+            resultImage.pixels[i][j] = Lookup[image.pixels[i][j]];
+        }
+    }
+
+    return resultImage;
+}
+
+
 // Correction gamma. Retourne l'image transformée
 PGMImage correction_gamma(PGMImage image, double gamma){
     PGMImage resultImage;

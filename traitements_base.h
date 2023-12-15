@@ -5,6 +5,7 @@
 double luminance(PGMImage image);
 double contraste(PGMImage image);
 PGMImage transfo_lineaire(PGMImage image);
+PGMImage transfo_lineaire_saturation(PGMImage image, int Smin, int Smax);
 PGMImage correction_gamma(PGMImage image, double gamma);
 PGMImage correction_dynamique(PGMImage image, int valeur_max);
 PGMImage egalisation_hist(PGMImage image);

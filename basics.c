@@ -212,6 +212,19 @@ PGMImage createImage(int width, int height){
 }
 
 
+// Crée une image de largeur 'width' et de hauteur 'height', avec tous les pixels de même valeur 'valeur_pixel'
+PGMImage createImageWithColor(int width, int height, unsigned char valeur_pixel){
+
+    PGMImage resultImage = createImage(width, height);
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            resultImage.pixels[i][j] = valeur_pixel;
+        }
+    }
+    return resultImage;
+}
+
+
 // Fonction principale pour tester les fonctions readPGM et writePGM
 // int main() {
 //     PGMImage image = readPGM("image.pgm");

@@ -17,3 +17,4 @@ void writeBinaryPGM(const char *filename, PGMImage image);
 void freeImage(PGMImage image);
 PGMImage copyImage(PGMImage image, bool copy_pixels);
 PGMImage createImage(int width, int height);
+PGMImage createImageWithColor(int width, int height, unsigned char valeur_pixel);

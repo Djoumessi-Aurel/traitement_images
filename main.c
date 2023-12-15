@@ -5,7 +5,7 @@
 
 int main() {
     
-    PGMImage image1 = readPGM("./images/pgm binaire/goldhill.512.pgm");
+    PGMImage image1 = readPGM("./images/pgm binaire/PengBrew.pgm");
     PGMImage image2 = readPGM("./images/pgm binaire/filtre_mixte.pgm");
 
     double L1 = luminance(image1), L2 = luminance(image2);
@@ -14,10 +14,10 @@ int main() {
     printf("Image 1: luminance = %lf, contraste = %lf\n", L1, C1);
     printf("Image 2: luminance = %lf, contraste = %lf\n", L2, C2);
 
-    PGMImage image1_corrigee = redimensionner(image1, 1700, 1700);
+    PGMImage image1_corrigee = transfo_lineaire_saturation(image1, 50, 50);
     printf("Image 1 corrigee: luminance = %lf, contraste = %lf\n", luminance(image1_corrigee), contraste(image1_corrigee));
 
-    writeBinaryPGM("./output/goldhill.1700.pgm", image1_corrigee);
+    writeBinaryPGM("./output/PengBrew.satur2.pgm", image1_corrigee);
     // writeAsciiPGM("./output/dwsample-pgm-1280.pgm", image1);
 
     // Libérer la mémoire
