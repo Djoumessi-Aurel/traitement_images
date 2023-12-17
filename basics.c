@@ -223,21 +223,3 @@ PGMImage createImageWithColor(int width, int height, unsigned char valeur_pixel)
     }
     return resultImage;
 }
-
-
-// Fonction principale pour tester les fonctions readPGM et writePGM
-// int main() {
-//     PGMImage image = readPGM("image.pgm");
-
-//     // Traiter l'image ici...
-
-//     writePGM("nouvelle_image.pgm", image);
-
-//     // Libérer la mémoire
-//     for (int i = 0; i < image.height; ++i) {
-//         free(image.pixels[i]);
-//     }
-//     free(image.pixels);
-
-//     return 0;
-// }

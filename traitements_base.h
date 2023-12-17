@@ -1,3 +1,6 @@
+#ifndef TRAITEMENTS_BASE_H
+#define TRAITEMENTS_BASE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,3 +18,6 @@ PGMImage addition(PGMImage image1, PGMImage image2);
 PGMImage soustraction(PGMImage image1, PGMImage image2);
 PGMImage multiplication(PGMImage image, double k);
 PGMImage redimensionner(PGMImage image, unsigned int newLargeur, unsigned int newHauteur);
+
+
+#endif /* TRAITEMENTS_BASE_H */
