@@ -22,6 +22,11 @@ double gaussian(int x, int y, double sigma);
 Filtre filtreMoyenneur(unsigned int n);
 PGMImage convFiltreMoyenneur(PGMImage image, unsigned int taille_filtre);
 PGMImage convFiltreGaussien(PGMImage image, unsigned int taille_filtre, double sigma);
+int comparer(const void *a, const void *b);
+double mediane(int *liste, int taille);
+PGMImage transfo_filtre_median(PGMImage image, unsigned int taille_filtre, bool nettoyage);
+PGMImage transfo_filtre_max(PGMImage image, unsigned int taille_filtre, bool nettoyage);
+PGMImage transfo_filtre_min(PGMImage image, unsigned int taille_filtre, bool nettoyage);
 
 
 #endif /* CONVOLUTION_H */

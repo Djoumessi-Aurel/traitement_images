@@ -6,7 +6,7 @@
 
 int main() {
     
-    PGMImage image1 = readPGM("./images/pgm binaire/PengBrew.pgm");
+    PGMImage image1 = readPGM("./images/pgm binaire/maison_bruitee.pgm");
     PGMImage image2 = readPGM("./images/pgm binaire/filtre_mixte.pgm");
 
     double L1 = luminance(image1), L2 = luminance(image2);
@@ -15,16 +15,16 @@ int main() {
     printf("Image 1: luminance = %lf, contraste = %lf\n", L1, C1);
     printf("Image 2: luminance = %lf, contraste = %lf\n", L2, C2);
 
-    PGMImage image1_floue = convFiltreGaussien(image1, 5, 3);
-    printf("Image 1 floue: luminance = %lf, contraste = %lf\n", luminance(image1_floue), contraste(image1_floue));
+    PGMImage image1_median = transfo_filtre_median(image1, 7, true);
+    printf("Image 1 floue: luminance = %lf, contraste = %lf\n", luminance(image1_median), contraste(image1_median));
 
-    writeBinaryPGM("./output/PengBrew.gauss_5_sigma3.pgm", image1_floue);
+    writeBinaryPGM("./output/maison_bruitee_median_7.pgm", image1_median);
     // writeAsciiPGM("./output/dwsample-pgm-1280.pgm", image1);
 
     // Libérer la mémoire
     freeImage(image1);
     freeImage(image2);
-    freeImage(image1_floue);
+    freeImage(image1_median);
 
     system("pause");
 
@@ -72,16 +72,16 @@ int main() {
 //     printf("Image 1: luminance = %lf, contraste = %lf\n", L1, C1);
 //     printf("Image 2: luminance = %lf, contraste = %lf\n", L2, C2);
 
-//     PGMImage image1_floue = transfo_lineaire_saturation(image1, 50, 50);
-//     printf("Image 1 floue: luminance = %lf, contraste = %lf\n", luminance(image1_floue), contraste(image1_floue));
+//     PGMImage image1_median = transfo_lineaire_saturation(image1, 50, 50);
+//     printf("Image 1 floue: luminance = %lf, contraste = %lf\n", luminance(image1_median), contraste(image1_median));
 
-//     writeBinaryPGM("./output/PengBrew.satur2.pgm", image1_floue);
+//     writeBinaryPGM("./output/PengBrew.satur2.pgm", image1_median);
 //     // writeAsciiPGM("./output/dwsample-pgm-1280.pgm", image1);
 
 //     // Libérer la mémoire
 //     freeImage(image1);
 //     freeImage(image2);
-//     freeImage(image1_floue);
+//     freeImage(image1_median);
 
 //     system("pause");
 
