@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include "basics.h"
 
 // Fonction pour lire un fichier PGM (ascii/P2 ou binaire/P5) et générer la matrice de pixels
